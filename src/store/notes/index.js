@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import uniqid from 'uniqid';
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import { find } from 'lodash';
 
 import { DEFAULT_CONTENT } from './constants';
 
@@ -21,6 +22,7 @@ export const useNotes = () => {
 export const NoteProvider = ({ children }) => {
   const { get, set } = useLocalStorage({ key: 'items', getFallback: [] });
   const [items, setItems] = useState([]);
+  const [activeId, setActiveId] = useState(null);
 
   const syncStorage = useCallback(() => {
     setItems(get());
@@ -44,6 +46,8 @@ export const NoteProvider = ({ children }) => {
       set([item, ...get()]);
 
       syncStorage();
+
+      return item;
     },
     [get, set, syncStorage],
   );
@@ -57,12 +61,39 @@ export const NoteProvider = ({ children }) => {
     [get, set, syncStorage],
   );
 
-  const open = useCallback(() => {}, []);
+  const open = useCallback((id) => {
+    setActiveId(id);
+  }, []);
 
   const close = useCallback(() => {}, []);
 
+  const getSelected = useCallback(() => {
+    const foundNote = find(get(), { id: activeId });
+
+    return foundNote;
+  }, [get, activeId]);
+
+  const getSelectedId = useCallback(() => activeId, [activeId]);
+
+  const removeSelected = useCallback(() => {
+    setActiveId(null);
+  }, []);
+
   return (
-    <Context.Provider value={{ items, getAllIds, save, add, remove, open, close }}>
+    <Context.Provider
+      value={{
+        items,
+        getAllIds,
+        save,
+        add,
+        remove,
+        open,
+        close,
+        getSelected,
+        getSelectedId,
+        removeSelected,
+      }}
+    >
       {children}
     </Context.Provider>
   );

@@ -10,7 +10,7 @@ const Items = () => {
   return (
     <>
       {notes.items.map((item) => (
-        <Card onClick={() => notes.remove(item.id)}>
+        <Card onClick={() => notes.open(item.id)}>
           <div className="shadow-sm list-card list-card--regular">
             <div className="list-card list-card--regular list-card--regular-wrapper">
               <ReactMarkdown>{item.body}</ReactMarkdown>
