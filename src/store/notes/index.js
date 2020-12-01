@@ -17,12 +17,12 @@ export const useNotes = () => {
 };
 
 export const NoteProvider = ({ children }) => {
-  const storage = useLocalStorage({ key: 'items' });
+  const { get, set } = useLocalStorage({ key: 'items', getFallback: [] });
   const [items, setItems] = useState([]);
 
   const syncStorage = useCallback(() => {
-    setItems(storage.get());
-  }, [storage]);
+    setItems(get());
+  }, [get]);
 
   useEffect(() => {
     syncStorage();
@@ -39,20 +39,20 @@ export const NoteProvider = ({ children }) => {
         body,
       };
 
-      storage.set([item, ...storage.get()]);
+      set([item, ...get()]);
 
       syncStorage();
     },
-    [storage, syncStorage],
+    [get, set, syncStorage],
   );
 
   const remove = useCallback(
     (id) => {
-      storage.set([...storage.get().filter((item) => item.id !== id)]);
+      set([...get([]).filter((item) => item.id !== id)]);
 
       syncStorage();
     },
-    [storage, syncStorage],
+    [get, set, syncStorage],
   );
 
   const open = useCallback(() => {}, []);

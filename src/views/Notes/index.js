@@ -1,11 +1,24 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { memo } from 'react';
 
 import { useNotes } from '../../store';
 
 const Notes = () => {
-  useNotes();
+  const notes = useNotes();
 
-  return <p>Hello Notes</p>;
+  return (
+    <div>
+      <button type="button" onClick={() => notes.add('test')}>
+        add note
+      </button>
+      {notes.items.map((item) => (
+        <p onClick={() => notes.remove(item.id)} key={item.id}>
+          {item.id}
+        </p>
+      ))}
+    </div>
+  );
 };
 
 export default memo(Notes);
