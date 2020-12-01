@@ -44,9 +44,14 @@ const Modal = () => {
     setBody(event.target.value);
   }, []);
 
+  const onSave = useCallback(() => {
+    notes.save(notes.getSelectedId(), body);
+    setState(states.VIEW);
+  }, [body, notes]);
+
   return (
     <Dialog onClose={onClose} isOpen={isOpen}>
-      <Controls state={state} onToggle={onToggle} />
+      <Controls onSave={onSave} state={state} onToggle={onToggle} />
       {state === states.EDIT ? (
         <FormControl value={body} onChange={onChange} className="edit" rows={25} as="textarea">
           {body}

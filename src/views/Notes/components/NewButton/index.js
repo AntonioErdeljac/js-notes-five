@@ -7,13 +7,16 @@ const NewCard = () => {
   const notes = useNotes();
 
   return (
-    <Card
-      onClick={() => {
-        const item = notes.add();
-        notes.open(item.id);
-      }}
-    >
-      <div className="shadow list-card list-card--primary">+</div>
+    <Card>
+      <div
+        onClick={() => {
+          const item = notes.add();
+          notes.open(item.id);
+        }}
+        className="shadow list-card list-card--primary"
+      >
+        +
+      </div>
     </Card>
   );
 };

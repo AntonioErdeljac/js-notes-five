@@ -34,7 +34,24 @@ export const NoteProvider = ({ children }) => {
 
   const getAllIds = useCallback(() => {}, []);
 
-  const save = useCallback(() => {}, []);
+  const save = useCallback(
+    (id, body) => {
+      const updatedItems = get().map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            body,
+          };
+        }
+
+        return item;
+      });
+
+      set(updatedItems);
+      syncStorage();
+    },
+    [syncStorage, set, get],
+  );
 
   const add = useCallback(
     (body) => {
