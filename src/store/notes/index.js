@@ -30,8 +30,6 @@ export const NoteProvider = ({ children }) => {
 
   const getAllIds = useCallback(() => {}, []);
 
-  const get = useCallback(() => {}, []);
-
   const save = useCallback(() => {}, []);
 
   const add = useCallback(
@@ -48,14 +46,21 @@ export const NoteProvider = ({ children }) => {
     [storage, syncStorage],
   );
 
-  const remove = useCallback(() => {}, []);
+  const remove = useCallback(
+    (id) => {
+      storage.set([...storage.get().filter((item) => item.id !== id)]);
+
+      syncStorage();
+    },
+    [storage, syncStorage],
+  );
 
   const open = useCallback(() => {}, []);
 
   const close = useCallback(() => {}, []);
 
   return (
-    <Context.Provider value={{ items, getAllIds, get, save, add, remove, open, close }}>
+    <Context.Provider value={{ items, getAllIds, save, add, remove, open, close }}>
       {children}
     </Context.Provider>
   );
