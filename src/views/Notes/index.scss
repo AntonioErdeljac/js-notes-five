@@ -1,14 +1,24 @@
-@import "../../scss/variables";
+@import "../../scss/bootstrap";
 
 .list {
   &-card {
-    padding: 30px;
+    height: 240px;
     border: 1px solid $border-radius;
     border-radius: 6px;
+    background-color: $white;
+    cursor: pointer;
+    transition: .2s opacity;
+
+    &:hover {
+      opacity: 0.8;
+    }
 
     &--primary {
-      background-color: $primary-color;
-      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $primary;
+      color: $white;
       font-size: 50px;
       font-weight: bold;
       text-align: center;
