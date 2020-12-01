@@ -1,12 +1,17 @@
 const { useCallback } = require('react');
 
-const useLocalStorage = ({ key, value }) => {
-  const set = useCallback(() => {
-    window.localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value]);
+const useLocalStorage = ({ key }) => {
+  const set = useCallback(
+    (value) => {
+      window.localStorage.setItem(key, JSON.stringify(value));
+    },
+    [key],
+  );
 
   const get = useCallback(() => {
-    return window.localStorage.getItem(key);
+    const item = window.localStorage.getItem(key);
+
+    return JSON.parse(item);
   }, [key]);
 
   return { set, get };

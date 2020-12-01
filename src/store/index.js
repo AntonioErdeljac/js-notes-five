@@ -1,2 +1,1 @@
-export { NoteProvider } from './notes';
-export { useNotes } from './notes';
+export { NoteProvider, useNotes } from './notes';

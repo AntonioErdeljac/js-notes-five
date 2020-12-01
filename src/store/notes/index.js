@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import uniqid from 'uniqid';
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
 import { useLocalStorage } from '../../hooks';
@@ -16,12 +17,16 @@ export const useNotes = () => {
 };
 
 export const NoteProvider = ({ children }) => {
-  const storage = useLocalStorage({ key: 'notes' });
+  const storage = useLocalStorage({ key: 'items' });
   const [items, setItems] = useState([]);
 
-  useEffect(() => {
+  const syncStorage = useCallback(() => {
     setItems(storage.get());
   }, [storage]);
+
+  useEffect(() => {
+    syncStorage();
+  }, [syncStorage]);
 
   const getAllIds = useCallback(() => {}, []);
 
@@ -29,7 +34,19 @@ export const NoteProvider = ({ children }) => {
 
   const save = useCallback(() => {}, []);
 
-  const add = useCallback(() => {}, []);
+  const add = useCallback(
+    (body) => {
+      const item = {
+        id: uniqid(),
+        body,
+      };
+
+      storage.set([item, ...storage.get()]);
+
+      syncStorage();
+    },
+    [storage, syncStorage],
+  );
 
   const remove = useCallback(() => {}, []);
 
