@@ -1,0 +1,10 @@
+.ReactModal__Content {
+  @media only screen and (max-width: 992px) {
+    height: 100% !important;
+    width: 100% !important;
+  }
+}
+
+.ReactModal__Overlay--after-open {
+  background-color: rgba(0,0,0,0.2) !important;
+}

@@ -2,6 +2,8 @@ import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import React, { memo } from 'react';
 
+import './index.scss';
+
 Modal.setAppElement('#root');
 
 const customStyles = {
@@ -12,6 +14,11 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    height: '90vh',
+    width: '40vw',
+    border: 'none',
+    padding: 30,
+    boxShadow: '0px 0px 10px rgba(0,0,0,0.07)',
   },
 };
 
