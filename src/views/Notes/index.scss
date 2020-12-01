@@ -1,0 +1,17 @@
+@import "../../scss/variables";
+
+.list {
+  &-card {
+    padding: 30px;
+    border: 1px solid $border-radius;
+    border-radius: 6px;
+
+    &--primary {
+      background-color: $primary-color;
+      color: #fff;
+      font-size: 50px;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+}

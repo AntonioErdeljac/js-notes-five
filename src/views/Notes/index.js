@@ -1,21 +1,19 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { memo } from 'react';
 
+import { NewCard } from './components';
+
 import { useNotes } from '../../store';
+
+import './index.scss';
 
 const Notes = () => {
   const notes = useNotes();
 
   return (
-    <div>
-      <button type="button" onClick={() => notes.add('test')}>
-        add note
-      </button>
+    <div className="list">
+      <NewCard />
       {notes.items.map((item) => (
-        <p onClick={() => notes.remove(item.id)} key={item.id}>
-          {item.id}
-        </p>
+        <p>{item.id}</p>
       ))}
     </div>
   );
