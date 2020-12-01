@@ -5,7 +5,7 @@ const Card = ({ children, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="col-12 col-sm-6 col-md-4 col-xl-2 d-inline-flex align-items-center justify-content-center py-5"
+      className="col-12 col-sm-6 col-md-4 col-xl-3 d-inline-flex align-items-center justify-content-center py-5"
     >
       {children}
     </div>

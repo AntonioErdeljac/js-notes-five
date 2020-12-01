@@ -8,7 +8,7 @@ const NewCard = () => {
   const notes = useNotes();
 
   return (
-    <Card onClick={() => notes.add('test')}>
+    <Card onClick={() => notes.add()}>
       <div className="shadow list-card list-card--primary">+</div>
     </Card>
   );

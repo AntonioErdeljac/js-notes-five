@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import uniqid from 'uniqid';
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
+import { DEFAULT_CONTENT } from './constants';
+
 import { useLocalStorage } from '../../hooks';
 
 export const Context = createContext();
@@ -36,7 +38,7 @@ export const NoteProvider = ({ children }) => {
     (body) => {
       const item = {
         id: uniqid(),
-        body,
+        body: body || DEFAULT_CONTENT,
       };
 
       set([item, ...get()]);
