@@ -25,10 +25,6 @@ const Modal = () => {
     }
   }, [isOpen, notes]);
 
-  const onClose = useCallback(() => {
-    notes.removeSelected();
-  }, [notes]);
-
   const onToggle = useCallback(() => {
     setState((oldState) => {
       const toggleMap = {
@@ -49,9 +45,14 @@ const Modal = () => {
     setState(states.VIEW);
   }, [body, notes]);
 
+  const onDelete = useCallback(() => {
+    notes.remove(notes.getSelectedId());
+    notes.close();
+  }, [notes]);
+
   return (
-    <Dialog onClose={onClose} isOpen={isOpen}>
-      <Controls onSave={onSave} state={state} onToggle={onToggle} />
+    <Dialog onClose={notes.close} isOpen={isOpen}>
+      <Controls onDelete={onDelete} onSave={onSave} state={state} onToggle={onToggle} />
       {state === states.EDIT ? (
         <FormControl value={body} onChange={onChange} className="edit" rows={25} as="textarea">
           {body}

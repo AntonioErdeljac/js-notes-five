@@ -82,7 +82,7 @@ export const NoteProvider = ({ children }) => {
     setActiveId(id);
   }, []);
 
-  const close = useCallback(() => {}, []);
+  const close = useCallback(() => setActiveId(null), []);
 
   const getSelected = useCallback(() => {
     const foundNote = find(get(), { id: activeId });
@@ -91,10 +91,6 @@ export const NoteProvider = ({ children }) => {
   }, [get, activeId]);
 
   const getSelectedId = useCallback(() => activeId, [activeId]);
-
-  const removeSelected = useCallback(() => {
-    setActiveId(null);
-  }, []);
 
   return (
     <Context.Provider
@@ -108,7 +104,6 @@ export const NoteProvider = ({ children }) => {
         close,
         getSelected,
         getSelectedId,
-        removeSelected,
       }}
     >
       {children}

@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 import { useNotes } from '../../../../../../store';
 import { states } from '../../constants';
 
-const Controls = ({ state, onToggle, onSave }) => {
+const Controls = ({ state, onToggle, onSave, onDelete }) => {
   const notes = useNotes();
 
   const iconMap = useMemo(
@@ -27,11 +27,7 @@ const Controls = ({ state, onToggle, onSave }) => {
 
   return (
     <div className="d-inline-flex justify-content-between w-100 border-bottom pb-3 mb-3">
-      <Button
-        onClick={notes.removeSelected}
-        className="d-inline-flex align-items-center"
-        variant="light"
-      >
+      <Button onClick={notes.close} className="d-inline-flex align-items-center" variant="light">
         <i className="material-icons">keyboard_backspace</i>
       </Button>
       <div className="d-inline-flex">
@@ -42,7 +38,7 @@ const Controls = ({ state, onToggle, onSave }) => {
         >
           <i className="material-icons">{iconMap[state]}</i>
         </Button>
-        <Button className="d-inline-flex align-items-center" variant="light">
+        <Button onClick={onDelete} className="d-inline-flex align-items-center" variant="light">
           <i className="material-icons">delete</i>
         </Button>
       </div>
@@ -54,6 +50,7 @@ Controls.propTypes = {
   state: PropTypes.string.isRequired,
   onSave: PropTypes.func.isRequired,
   onToggle: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default memo(Controls);
