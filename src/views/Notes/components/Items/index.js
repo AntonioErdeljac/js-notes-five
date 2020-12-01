@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 
+import { Card } from '../../../../components';
 import { useNotes } from '../../../../store';
-import Card from '../Card';
 
 const Items = () => {
   const notes = useNotes();

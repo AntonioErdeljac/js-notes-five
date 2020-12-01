@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 
 const Card = ({ children, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="col-12 col-sm-6 col-md-4 col-xl-2  d-inline-flex align-items-center justify-content-center px-3 py-5"
+      className="col-12 col-sm-6 col-md-4 col-xl-2 d-inline-flex align-items-center justify-content-center py-5"
     >
       {children}
     </div>
@@ -21,4 +21,4 @@ Card.defaultProps = {
   onClick: null,
 };
 
-export default Card;
+export default memo(Card);

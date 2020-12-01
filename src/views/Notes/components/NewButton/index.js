@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import Card from '../Card';
+import { Card } from '../../../../components';
 
 import { useNotes } from '../../../../store';
 
