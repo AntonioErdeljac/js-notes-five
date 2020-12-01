@@ -1,10 +1,11 @@
 # js-notes-five
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ab52a7c3-83be-4bfa-9d37-f6d99dab096d/deploy-status)](https://app.netlify.com/sites/tender-ritchie-877c56/deploys)
 
 Notes app built with React.js.
 
 ## CI / CD
 
-- [Netlify](https://reverent-lewin-6110a6.netlify.app/)
+- [Netlify](https://tender-ritchie-877c56.netlify.app)
 
 ### Cloning the repository
 
