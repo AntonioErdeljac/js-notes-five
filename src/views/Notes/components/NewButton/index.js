@@ -1,14 +1,16 @@
 import React, { memo } from 'react';
 
+import Card from '../Card';
+
 import { useNotes } from '../../../../store';
 
 const NewCard = () => {
   const notes = useNotes();
 
   return (
-    <div onClick={() => notes.add('test')} className="col-3 p-5">
+    <Card onClick={() => notes.add('test')}>
       <div className="shadow list-card list-card--primary">+</div>
-    </div>
+    </Card>
   );
 };
 

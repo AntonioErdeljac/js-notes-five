@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { NewCard, Items } from './components';
+import { NewButton, Items } from './components';
 
 import './index.scss';
 
@@ -8,7 +8,7 @@ const Notes = () => {
   return (
     <div className="container-fluid">
       <div className="row">
-        <NewCard />
+        <NewButton />
         <Items />
       </div>
     </div>

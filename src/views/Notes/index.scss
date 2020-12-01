@@ -2,12 +2,13 @@
 
 .list {
   &-card {
-    height: 240px;
-    border: 1px solid $border-radius;
+    height: 200px;
+    width: 200px;
     border-radius: 6px;
     background-color: $white;
     cursor: pointer;
     transition: .2s opacity;
+    user-select: none;
 
     &:hover {
       opacity: 0.8;

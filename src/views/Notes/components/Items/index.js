@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 
 import { useNotes } from '../../../../store';
+import Card from '../Card';
 
 const Items = () => {
   const notes = useNotes();
@@ -8,9 +9,9 @@ const Items = () => {
   return (
     <>
       {notes.items.map((item) => (
-        <div onClick={() => notes.remove(item.id)} className="col-3 p-5">
+        <Card onClick={() => notes.remove(item.id)}>
           <div className="shadow-sm list-card">{item.id}</div>
-        </div>
+        </Card>
       ))}
     </>
   );
