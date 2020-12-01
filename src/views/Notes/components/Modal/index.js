@@ -16,14 +16,22 @@ const Modal = () => {
   const [body, setBody] = useState(null);
 
   const isOpen = useMemo(() => !!notes.getSelectedId(), [notes]);
+  const selectedNote = useMemo(() => notes.getSelected(), [notes]);
+
+  useEffect(() => {
+    if (selectedNote && !selectedNote?.touched) {
+      setState(states.EDIT);
+      notes.save(selectedNote?.id, { ...selectedNote, touched: true });
+    }
+  }, [selectedNote, notes]);
 
   useEffect(() => {
     if (isOpen) {
-      setBody(notes.getSelected()?.body);
+      setBody(selectedNote?.body);
     } else {
       setState(states.VIEW);
     }
-  }, [isOpen, notes]);
+  }, [isOpen, selectedNote]);
 
   const onToggle = useCallback(() => {
     setState((oldState) => {
@@ -41,9 +49,9 @@ const Modal = () => {
   }, []);
 
   const onSave = useCallback(() => {
-    notes.save(notes.getSelectedId(), body);
+    notes.save(notes.getSelectedId(), { ...selectedNote, body });
     setState(states.VIEW);
-  }, [body, notes]);
+  }, [body, notes, selectedNote]);
 
   const onDelete = useCallback(() => {
     notes.remove(notes.getSelectedId());

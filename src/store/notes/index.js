@@ -35,12 +35,13 @@ export const NoteProvider = ({ children }) => {
   const getAllIds = useCallback(() => {}, []);
 
   const save = useCallback(
-    (id, body) => {
+    (id, options) => {
       const updatedItems = get().map((item) => {
         if (item.id === id) {
           return {
             ...item,
-            body,
+            body: options.body,
+            touched: options.touched,
           };
         }
 
@@ -58,6 +59,7 @@ export const NoteProvider = ({ children }) => {
       const item = {
         id: uniqid(),
         body: body || DEFAULT_CONTENT,
+        touched: false,
       };
 
       set([item, ...get()]);
