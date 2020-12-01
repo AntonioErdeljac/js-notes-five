@@ -1,1 +1,1 @@
-export { default as NotesControl } from './NotesControl';
+export { default as NoteProvider } from './NoteProvider';
