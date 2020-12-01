@@ -1,16 +1,26 @@
 import PropTypes from 'prop-types';
-import React, { createContext, useCallback, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
 import { useLocalStorage } from '../../hooks';
 
 export const Context = createContext();
 
-const Provider = ({ children }) => {
-  const storage = useLocalStorage();
+export const useNotes = () => {
+  const notesContext = useContext(Context);
+
+  if (notesContext === undefined) {
+    throw new Error('useNotes must be used within a NoteProvider');
+  }
+
+  return notesContext;
+};
+
+export const NoteProvider = ({ children }) => {
+  const storage = useLocalStorage({ key: 'notes' });
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    setItems(storage.get('notes'));
+    setItems(storage.get());
   }, [storage]);
 
   const getAllIds = useCallback(() => {}, []);
@@ -34,8 +44,6 @@ const Provider = ({ children }) => {
   );
 };
 
-Provider.propTypes = {
+NoteProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
-export default Provider;

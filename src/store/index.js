@@ -1,1 +1,2 @@
-export { default as NoteProvider } from './NoteProvider';
+export { NoteProvider } from './notes';
+export { useNotes } from './notes';
