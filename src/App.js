@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 
-import { Notes } from './views';
 import { NoteProvider } from './store';
 
 import './scss/index.scss';
 
+const Notes = lazy(() => import('./views/Notes'));
+
 const App = () => {
   return (
     <NoteProvider>
-      <Notes />
+      <Suspense fallback={<p>Loading...</p>}>
+        <Notes />
+      </Suspense>
     </NoteProvider>
   );
 };

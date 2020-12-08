@@ -1,7 +1,15 @@
 import PropTypes from 'prop-types';
 import uniqid from 'uniqid';
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { find } from 'lodash';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import { find, isEqual } from 'lodash';
 
 import { DEFAULT_CONTENT } from './constants';
 
@@ -21,11 +29,16 @@ export const useNotes = () => {
 
 export const NoteProvider = ({ children }) => {
   const { get, set } = useLocalStorage({ key: 'items', getFallback: [] });
-  const [items, setItems] = useState([]);
   const [activeId, setActiveId] = useState(null);
 
+  const oldItems = useRef([]);
+  const [items, setItems] = useState([]);
+
   const syncStorage = useCallback(() => {
-    setItems(get());
+    if (!isEqual(oldItems.current, get())) {
+      oldItems.current = get();
+      setItems(get());
+    }
   }, [get]);
 
   useEffect(() => {
@@ -94,23 +107,22 @@ export const NoteProvider = ({ children }) => {
 
   const getSelectedId = useCallback(() => activeId, [activeId]);
 
-  return (
-    <Context.Provider
-      value={{
-        items,
-        getAllIds,
-        save,
-        add,
-        remove,
-        open,
-        close,
-        getSelected,
-        getSelectedId,
-      }}
-    >
-      {children}
-    </Context.Provider>
+  const value = useMemo(
+    () => ({
+      items,
+      getAllIds,
+      save,
+      add,
+      remove,
+      open,
+      close,
+      getSelected,
+      getSelectedId,
+    }),
+    [items, getAllIds, save, add, remove, open, close, getSelected, getSelectedId],
   );
+
+  return <Context.Provider value={value}>{children}</Context.Provider>;
 };
 
 NoteProvider.propTypes = {
