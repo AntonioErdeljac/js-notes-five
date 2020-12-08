@@ -1,11 +1,18 @@
 # js-notes-five
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ab52a7c3-83be-4bfa-9d37-f6d99dab096d/deploy-status)](https://app.netlify.com/sites/tender-ritchie-877c56/deploys)
 
 Notes app built with React.js.
 
-## CI / CD
+### CI / CD
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ab52a7c3-83be-4bfa-9d37-f6d99dab096d/deploy-status)](https://app.netlify.com/sites/tender-ritchie-877c56/deploys)
+![Node.js CI](https://github.com/AntonioErdeljac/js-web-rimac/workflows/Node.js%20CI/badge.svg)
 
-- [Netlify](https://tender-ritchie-877c56.netlify.app)
+[Live version](https://tender-ritchie-877c56.netlify.app)
+
+### Lint
+[![eslint: airbnb](https://img.shields.io/badge/Eslint-Airbnb-red?logo=airbnb&style=flat)](https://github.com/airbnb/javascript)
+[![commitlint: conventional](https://img.shields.io/badge/Commitlint-Conventional-red?logo=commitlint&style=flat)](https://github.com/conventional-changelog/commitlint)
+[![code style: prettier](https://img.shields.io/badge/Code%20Style-Prettier-red?logo=prettier&style=flat)](https://github.com/prettier/prettier)
+[![stylelint: scss](https://img.shields.io/badge/Stylelint-SCSS-red?logo=stylelint&style=flat)](https://github.com/bjankord/stylelint-config-sass-guidelines#readme)
 
 ### Cloning the repository
 
