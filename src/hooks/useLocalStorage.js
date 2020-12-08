@@ -1,4 +1,4 @@
-const { useCallback, useRef } = require('react');
+const { useCallback, useRef, useMemo } = require('react');
 
 const useLocalStorage = ({ key, getFallback }) => {
   const fallback = useRef(getFallback);
@@ -16,7 +16,9 @@ const useLocalStorage = ({ key, getFallback }) => {
     return JSON.parse(item) || fallback.current;
   }, [key]);
 
-  return { set, get };
+  const value = useMemo(() => ({ get, set }), [get, set]);
+
+  return value;
 };
 
 export default useLocalStorage;

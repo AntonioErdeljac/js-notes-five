@@ -25,4 +25,6 @@ const Items = () => {
   );
 };
 
+Items.whyDidYouRender = true;
+
 export default memo(Items);
