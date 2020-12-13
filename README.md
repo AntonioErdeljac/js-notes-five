@@ -14,6 +14,10 @@ Notes app built with React.js.
 [![code style: prettier](https://img.shields.io/badge/Code%20Style-Prettier-red?logo=prettier&style=flat)](https://github.com/prettier/prettier)
 [![stylelint: scss](https://img.shields.io/badge/Stylelint-SCSS-red?logo=stylelint&style=flat)](https://github.com/bjankord/stylelint-config-sass-guidelines#readme)
 
+### Test
+[![testing: Jest](https://img.shields.io/badge/Tests-Jest-red?logo=jest&style=flat)](https://github.com/facebook/jest)
+[![testing: Enzyme](https://img.shields.io/badge/Tests-Enzyme-red?logo=enzyme&style=flat)](https://github.com/enzymejs/enzyme)
+
 ### Cloning the repository
 
 ```shell
@@ -31,10 +35,11 @@ npm i
 
 Running commands with npm `npm run [command]`
 
-| command            | description                                                                                                                                                                 |
-| :----------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `start`            | Starts a development instance of app                                                                                                                                        |
-| `build`            | Creates a production bundle using                                                                                                                                           |
-| `test`             | Opens the test suite                                                                                                                                                        |
-| `lint`             | Syntax check                                                                                                                                                                |
-| `lint:fix`         | Fix syntax as far as automatically possible                                                                                                                                 |
+| command            | description                                                   |
+| :----------------- | :-------------------------------------------------------------|
+| `start`            | Starts a development instance of app                          |
+| `build`            | Creates a production bundle using                             |
+| `test`             | Opens the test suite                                          |
+| `test:ci`          | Runs unit tests                                               |
+| `lint`             | Syntax check                                                  |
+| `lint:fix`         | Fix syntax as far as automatically possible                   |
