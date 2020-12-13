@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Component renders correctly according to snapshot 1`] = `
+<div
+  className="col-12 col-sm-6 col-md-4 col-xl-3 d-inline-flex align-items-center justify-content-center py-5"
+>
+  Content
+</div>
+`;
