@@ -14,4 +14,13 @@ describe('Card Component', () => {
   it('renders correctly according to snapshot', () => {
     expect(toJson(renderComponent(makeProps()))).toMatchSnapshot();
   });
+
+  it('renders correct children', () => {
+    const expectedChildren = 'Content';
+
+    const props = makeProps({ chidlren: expectedChildren });
+    const wrapper = renderComponent(props);
+
+    expect(wrapper.children().debug()).toEqual(expectedChildren);
+  });
 });
