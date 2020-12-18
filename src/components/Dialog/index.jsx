@@ -4,7 +4,9 @@ import React, { memo } from 'react';
 
 import './index.scss';
 
-Modal.setAppElement('#root');
+if (process.env.NODE_ENV !== 'test') {
+  Modal.setAppElement('#root');
+}
 
 const customStyles = {
   content: {

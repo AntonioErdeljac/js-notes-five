@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dialog Component renders correctly according to snapshot 1`] = `
+<Modal
+  ariaHideApp={true}
+  bodyOpenClassName="ReactModal__Body--open"
+  closeTimeoutMS={0}
+  contentElement={[Function]}
+  isOpen={false}
+  onRequestClose={null}
+  overlayElement={[Function]}
+  parentSelector={[Function]}
+  portalClassName="ReactModalPortal"
+  preventScroll={false}
+  role="dialog"
+  shouldCloseOnEsc={true}
+  shouldCloseOnOverlayClick={true}
+  shouldFocusAfterRender={true}
+  shouldReturnFocusAfterClose={true}
+  style={
+    Object {
+      "content": Object {
+        "border": "none",
+        "bottom": "auto",
+        "boxShadow": "0px 0px 10px rgba(0,0,0,0.07)",
+        "height": "90vh",
+        "left": "50%",
+        "marginRight": "-50%",
+        "padding": 30,
+        "right": "auto",
+        "top": "50%",
+        "transform": "translate(-50%, -50%)",
+        "width": "40vw",
+      },
+    }
+  }
+>
+  Content
+</Modal>
+`;
