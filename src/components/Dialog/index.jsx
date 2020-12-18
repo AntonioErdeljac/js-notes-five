@@ -2,9 +2,11 @@ import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import React, { memo } from 'react';
 
+import { TEST_ENV } from './constants';
+
 import './index.scss';
 
-if (process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV !== TEST_ENV) {
   Modal.setAppElement('#root');
 }
 
