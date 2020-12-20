@@ -4,7 +4,9 @@ import { shallow } from 'enzyme';
 
 import Dialog from './index';
 
-const makeProps = ({ children } = {}) => ({
+const makeProps = ({ isOpen, onClose, children } = {}) => ({
+  isOpen: isOpen || (() => {}),
+  onClose: onClose || (() => {}),
   children: children || 'Content',
 });
 
